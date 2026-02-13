@@ -101,6 +101,7 @@ curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3ZW4yMTU1MzI2OCIs
     ]
 
 修改产品
+
 curl -X POST http://localhost:7573/products/update/1 -H "Content-Type: application/json" -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3ZW4yMTU1MzI2OCIsInJvbGVzIjpbIlBST0RVQ1RfQURNSU4iLCJFRElUT1IiLCJVU0VSIl0sImlhdCI6MTc3MDk5NzE4NywiZXhwIjoxNzcxMDAwNzg3fQ.3qUu94zGJ6JOBcoyEP4knA4CzHY8N50FZLtbqjwfumw" -d "{\"name\":\"修改后的产品\"}"
 
 输出示例：
@@ -110,6 +111,7 @@ curl -X POST http://localhost:7573/products/update/1 -H "Content-Type: applicati
 }
 
 删除产品
+
 curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3ZW4yMTU1MzI2OCIsInJvbGVzIjpbIlBST0RVQ1RfQURNSU4iLCJFRElUT1IiLCJVU0VSIl0sImlhdCI6MTc3MDk5NzE4NywiZXhwIjoxNzcxMDAwNzg3fQ.3qUu94zGJ6JOBcoyEP4knA4CzHY8N50FZLtbqjwfumw" http://localhost:7573/products/delete/1
 
 # 打包所有服务
