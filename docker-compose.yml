@@ -1,0 +1,57 @@
+services:
+  config-server:
+    build: ./spring-product-config-server
+    container_name: config-server
+    ports:
+      - "8088:8088"
+    networks:
+      - spring-network
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+
+  discovery-server:
+    build: ./spring-product-discovery-server
+    container_name: discovery-server
+    ports:
+      - "8089:8089"
+    networks:
+      - spring-network
+    depends_on:
+      config-server:
+        condition: service_healthy
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+
+  products-service:
+    build: ./spring-product-products-service
+    container_name: products-service
+    ports:
+      - "8090:8090"
+    networks:
+      - spring-network
+    depends_on:
+      config-server:
+        condition: service_healthy
+      discovery-server:
+        condition: service_healthy
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+
+  api-gateway:
+    build: ./spring-product-api-gateway
+    container_name: api-gateway
+    ports:
+      - "7573:7573"
+    networks:
+      - spring-network
+    depends_on:
+      config-server:
+        condition: service_healthy
+      discovery-server:
+        condition: service_healthy
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+
+networks:
+  spring-network:
+    driver: bridge

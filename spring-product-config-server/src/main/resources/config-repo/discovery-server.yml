@@ -1,0 +1,6 @@
+server:
+  port: 8089
+eureka:
+  client:
+    service-url:
+      defaultZone: http://discovery-server:8089/eureka/
